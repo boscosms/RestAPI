@@ -1,4 +1,5 @@
-﻿using Walking.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Walking.API.Data;
 using Walking.API.Models.Domain;
 
 namespace Walking.API.Repositories
@@ -11,9 +12,9 @@ namespace Walking.API.Repositories
         {
             _context = context;
         }
-        public IEnumerable<Region> GetAll()
+        public async Task<IEnumerable<Region>> GetAllAsync()
         {
-          return _context.Regions.ToList();
+          return await _context.Regions.ToListAsync();
         }
     }
 }

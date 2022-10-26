@@ -19,9 +19,9 @@ namespace Walking.API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-     public IActionResult GetAllRegions()
+     public async Task<IActionResult> GetAllRegions()
         {
-            var regions = _regionRepository.GetAll();
+            var regions = await _regionRepository.GetAllAsync();
             //var regionsDTO = new List<DTOs.Region>();
             //regions.ToList().ForEach(region =>
             //{
