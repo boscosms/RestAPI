@@ -16,5 +16,10 @@ namespace Walking.API.Repositories
         {
           return await _context.Regions.ToListAsync();
         }
+
+        public async Task<Region> GetAsync(Guid id)
+        {
+            return await _context.Regions.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

@@ -40,5 +40,18 @@ namespace Walking.API.Controllers
            var regionsDTO = _mapper.Map<List<DTOs.Region>>(regions);
             return Ok(regionsDTO);
         }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetRegion(Guid id)
+        {
+          var region =  await _regionRepository.GetAsync(id);
+            if(region == null)
+            {
+                return NotFound();
+            }
+            var regionDTO = _mapper.Map<DTOs.Region>(region);
+            return Ok(regionDTO);
+        }
     }
 }
